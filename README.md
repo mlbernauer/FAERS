@@ -1,21 +1,23 @@
-# FAERS
+# FAERS 2
+## Updating Database
 
-## Old schema
+``` bash 
+# download latest FAERS extracts from the FDA websie
+./download_faers_data.sh 2023 ./data
 
-CASE - Number for identifying an AERS case (A case consists of 1 or more reports)
-ISR - Unique number for identifying AERS report.
-FOLL_SEQ - Sequence number of a follow-up report (blank for initial reports)
+# load FAERS archive into database
+./load.sh ./data/faers_ascii_2023Q3.zip faers.db
+```
 
-## Updated schema
-CASEID - Number for identifying FAERS case
-CASEVERSION - Safety report version number (initial case is 1)
-PRIMARYID - Unique number for identifying FAERS report (concatenation of CASEID, CASEVERSION)
+# Mapping convents used to harmonize data
 
-# ETL
-csvstack tool was used to stack all files corresponding to their respective tables. Columns were remapped:
-	CASE     => CASEID
-	ISR      => PRIMARYID
-	FOLL_SEQ => CASEVERSION
-	LOT_NBR  => LOT_NUM
+| Legacy | Current   | Description                                                   |
+| ---    | ---       | ---                                                           |
+| isr    | primaryid | Number identifying case report. A case can have many reports. |
+| case   | caseid    | A number identifying a case.                                  |
 
-csvcols tool was used to inspect column names across files
+1. Individual Safety Report (ISR) numbers were used by legacy system and are
+   now mapped to `report_id` field along with `primaryid` which is used in
+   current data releases.
+2. Case (`case`) numbers were used by legacy system are now mapped to the
+   `case_id` field along with `caseid` which is used in current data relases.
