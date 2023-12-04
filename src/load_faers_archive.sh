@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-#
+
 function main {
 	# unzip file into temp directory
 	unzip -q $1 -d .tmp/
