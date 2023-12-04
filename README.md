@@ -2,11 +2,11 @@
 ## Updating Database
 
 ``` bash 
-# download latest FAERS extracts from the FDA websie
-./download_faers_data.sh 2023 ./data
+# download latest FAERS extracts from the FDA website and save them to ./data
+./download_faers_archive.sh 2023 ./data
 
-# load FAERS archive into database
-./load.sh ./data/faers_ascii_2023Q3.zip faers.db
+# load FAERS archive into database...do this for each archive
+./load_faers_archive.sh ./data/faers_ascii_2023Q3.zip faers.db
 ```
 
 # Mapping convents used to harmonize data
