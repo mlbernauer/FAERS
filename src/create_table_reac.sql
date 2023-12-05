@@ -1,5 +1,5 @@
-drop view if exists reac;
-create view reac as
+drop table if exists reac;
+create table reac as
 	select
 		primaryid,
 		pt
@@ -15,3 +15,5 @@ create view reac as
 		pt
 	from reac_6829bf881a81dc9a1d13850c0f6e5694
 ;
+create index reac_idx01 on reac (primaryid);
+create index reac_idx02 on reac (pt);

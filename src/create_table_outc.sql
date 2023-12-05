@@ -1,5 +1,5 @@
-drop view if exists outc;
-create view outc as
+drop table if exists outc;
+create table outc as
 	select
 		primaryid,
 		outc_cod
@@ -15,3 +15,5 @@ create view outc as
 		outc_cod
 	from outc_92c661a576a4147333c7b31658c57c83
 ;
+create index outc_idx01 on outc (primaryid);
+create index outc_idx02 on outc (outc_cod);

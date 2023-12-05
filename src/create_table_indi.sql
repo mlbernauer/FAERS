@@ -1,5 +1,5 @@
-drop view if exists indi;
-create view indi as
+drop table if exists indi;
+create table indi as
 	select
 		primaryid,
 		indi_drug_seq,
@@ -12,3 +12,4 @@ create view indi as
 		indi_pt
 	from indi_6fee29085f85cdec311fc7b481d9bcc4
 ;
+create index indi_idx01 on indi (primaryid, indi_drug_seq);

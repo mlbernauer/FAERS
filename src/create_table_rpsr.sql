@@ -1,5 +1,5 @@
-drop view if exists rpsr;
-create view rpsr as
+drop table if exists rpsr;
+create table rpsr as
 	select
 		isr as PRIMARYID,
 		rpsr_cod
@@ -10,3 +10,5 @@ create view rpsr as
 		rpsr_cod
 	from rpsr_6651b0f2706f8f74918a4b76b0905a97
 ;
+create index rpsr_idx01 on rpsr (primaryid);
+create index rpsr_idx02 on rpsr (rpsr_cod);

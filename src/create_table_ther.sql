@@ -1,5 +1,5 @@
-drop view if exists ther;
-create view ther as
+drop table if exists ther;
+create table ther as
 	select
 		isr as PRIMARYID,
 		drug_seq as DSG_DRUG_SEQ,
@@ -18,3 +18,5 @@ create view ther as
 		dur_cod
 	from ther_6c8361911e2c5e50baf5f656faa4adc9
 ;
+create index ther_idx01 on ther (primaryid, dsg_drug_seq);
+

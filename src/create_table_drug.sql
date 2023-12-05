@@ -1,5 +1,5 @@
-drop view if exists drug;
-create view drug as
+drop table if exists drug;
+create table drug as
 	select
 		isr as primaryid,
 		drug_seq,
@@ -88,3 +88,5 @@ create view drug as
 		dose_freq
 	from drug_ac2178f08adc9ba7a7a39395a31f281b
 ;
+create index drug_idx01 on drug (primaryid, drug_seq);
+create index drug_idx02 on drug (drugname);
