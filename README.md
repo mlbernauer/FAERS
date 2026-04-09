@@ -15,23 +15,20 @@ sudo -u postgres psql faers < create-tables.sql
 ```
 
 ## Download FAERS files
-The file `2016-faers-files.txt` contains URLs for
-the 2016 FAERS files (Q1-Q4). Note: if you would
-like to use another set of files you should make
-sure they are compatable with the 2016 schema files
-list in `create-tables.sql`
 
 ```bash
-./download-faers-data.sh 2016-faers-files.txt
+# download FAERS file from FDA website
+./download.sh
+
+# extract contents
+./extract.sh
 ```
 
 ## Load data into tables
-The required FAERS archive files should be
-located within `./data`. We are now ready to
-load data into the `faers` database
+Load extracts into Postgres
 
 ```bash
-./load-data.sh
+./load_data.sh
 ```
 
 ## Create indices
